@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, flash
 from website.uli import Uli
 
 auth = Blueprint("auth", __name__)
@@ -15,6 +15,8 @@ def hex():
 @auth.route("/uli", methods=["GET", "POST"])
 def uli():
     if request.method == "POST":
-        uli = request.form.get("uli")
-        return render_template("uli.html", submitted=True, content=Uli(uli).get_uli_readable())
+        uli = Uli(request.form.get("uli"))
+        if not uli.is_valid():
+            flash("Empty or invalid ULI", category="error")
+        return render_template("uli.html", submitted=uli.is_valid(), formatted_uli=uli.get_formatted_uli(), details=uli.get_uli_details())
     return render_template("uli.html")
