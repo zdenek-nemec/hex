@@ -2,8 +2,6 @@
 {% block title %}ULI{% endblock %}
 
 {% block content%}
-This is ULI page
-
 <h1 align="center">User Location Information</h1>
 
 {% if submitted == True %}
@@ -11,13 +9,13 @@ This is ULI page
     {% print(formatted_uli) %}
     <br/>
 
-<ul class="list-group list-group-flush" id="details">
-    {% for detail in details %}
-    <li class="list-group-item">
-        {{ detail }}
-    </li>
-    {% endfor %}
-</ul>
+    <ul class="list-group list-group-flush" id="details">
+        {% for detail in details %}
+        <li class="list-group-item">
+            {{ detail }}
+        </li>
+        {% endfor %}
+    </ul>
 
 </div>
 <br/>
