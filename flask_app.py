@@ -1,6 +1,4 @@
-from website import create_application
-
-app = create_application()
+from main import main
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    main()
