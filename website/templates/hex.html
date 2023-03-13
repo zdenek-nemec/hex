@@ -2,13 +2,18 @@
 {% block title %}Hex{% endblock %}
 
 {% block content%}
-<h1 align="left">Number</h1>
+<h1 align="left">Hex</h1>
 
-{% if submitted == True %}
+{% if content %}
 <div class="container">
-    {% print(number) %}
+    <ul class="list-group list-group-flush" id="numbers">
+        {% for item in content %}
+        <li class="list-group-item">
+            {{ item }}
+        </li>
+        {% endfor %}
+    </ul>
 </div>
-<br/>
 {% endif %}
 
 <form method="POST">

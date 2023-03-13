@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request, flash
+
+from website.hex import Hex
 from website.uli import Uli
 
 auth = Blueprint("auth", __name__)
@@ -13,7 +15,17 @@ def home():
 def hex():
     if request.method == "POST":
         number = request.form.get("number")
-        return render_template("hex.html", submitted=True, number=number)
+        try:
+            hex = Hex(number)
+            output = [
+                f"Original (decimal): {number}",
+                f"Binary: {hex.get_value(2)}",
+                f"Hexadecimal: {hex.get_value(16)}"
+            ]
+        except:
+            flash("Invalid value")
+            output = []
+        return render_template("hex.html", content=output)
     return render_template("hex.html")
 
 
