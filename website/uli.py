@@ -35,28 +35,29 @@ class Uli(object):
         ]
 
     def _get_type_description(self, uli_type):
-        match uli_type:
-            case "01":
+            if uli_type == "01":
                 return "CGI"
-            case "02":
+            elif uli_type == "02":
                 return "SAI"
-            case "04":
+            elif uli_type == "04":
                 return "RAI"
-            case "05":
+            elif uli_type == "05":
                 return "CGI and RAI"
-            case "06":
+            elif uli_type == "06":
                 return "SAI and RAI"
-            case "08":
+            elif uli_type == "08":
                 return "TAI"
-            case "10":
+            elif uli_type == "10":
                 return "ECGI"
-            case "18":
+            elif uli_type == "18":
                 return "TAI and ECGI"
-            case "19":
+            elif uli_type == "19":
                 return "CGI, TAI and ECGI"
-            case "1A":
+            elif uli_type == "1A":
                 return "SAI, TAI and ECGI"
-            case "1C":
+            elif uli_type == "1C":
                 return "RAI, TAI and ECGI"
-            case "1E":
+            elif uli_type == "1E":
                 return "SAI, RAI, TAI and ECGI"
+            else:
+                return "Unknown"
