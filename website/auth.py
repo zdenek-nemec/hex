@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from website.uli import Uli
 
 auth = Blueprint("auth", __name__)
 
@@ -11,6 +12,9 @@ def hex():
     return render_template("hex.html")
 
 
-@auth.route("/uli")
+@auth.route("/uli", methods=["GET", "POST"])
 def uli():
+    if request.method == "POST":
+        uli = request.form.get("uli")
+        return render_template("uli.html", submitted=True, content=Uli(uli).get_uli_readable())
     return render_template("uli.html")
