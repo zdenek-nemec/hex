@@ -1,63 +1,52 @@
-SUPPORTED_ULI_TYPES = ["01", "02", "04", "05", "06", "08", "10", "18", "19", "1A", "1C", "1E"]
-
-
 class Uli(object):
     def __init__(self, uli: str):
         self._uli = uli
-        self._uli_type = ""
-        self._mcc_mnc = ""
-        self._rest = ""
-        if self.is_valid():
+        self._valid = True
+        self._uli_type = None
+        self._fields = None
+        try:
             self._parse_uli()
+        except:
+            self._valid = False
 
     def is_valid(self):
-        uli = self._uli
-        if uli == "" or len(uli) < 7:
-            return False
-        elif not uli[0:2] in SUPPORTED_ULI_TYPES:
-            return False
-        else:
-            return True
+        return self._valid
 
     def _parse_uli(self):
         uli = self._uli
+        if len(uli) < 2:
+            self._valid = False
+            return
         self._uli_type = uli[0:2]
-        self._mcc_mnc = uli[2:7]
-        self._rest = uli[7:]
+        self._fields = self._get_fields(self._uli_type)
+
+    def _get_fields(self, uli_type):
+        fields = []
+        if uli_type[0] == "1":
+            fields.append("ECGI")
+        right = f"{int(uli_type[1], 16):04b}"
+        if right[0] == "1":
+            fields.append("TAI")
+        if right[1] == "1":
+            fields.append("RAI")
+        if right[2] == "1":
+            fields.append("SAI")
+        if right[3] == "1":
+            fields.append("CGI")
+        return fields
+
+    def _get_type_description(self):
+        return " ".join(self._fields)
 
     def get_formatted_uli(self):
-        return self._uli + " = " + self._uli_type + " " + self._mcc_mnc + " " + self._rest
+        parsed = []
+        if self._uli_type:
+            parsed.append(self._uli_type)
+        parsed.append("...")
+        return self._uli + " = " + " ".join(parsed)
 
     def get_uli_details(self):
-        return [
-            f"ULI type {self._uli_type} = {self._get_type_description(self._uli_type)}",
-            f"MCC-MNC {self._mcc_mnc}"
-        ]
-
-    def _get_type_description(self, uli_type):
-            if uli_type == "01":
-                return "CGI"
-            elif uli_type == "02":
-                return "SAI"
-            elif uli_type == "04":
-                return "RAI"
-            elif uli_type == "05":
-                return "CGI and RAI"
-            elif uli_type == "06":
-                return "SAI and RAI"
-            elif uli_type == "08":
-                return "TAI"
-            elif uli_type == "10":
-                return "ECGI"
-            elif uli_type == "18":
-                return "TAI and ECGI"
-            elif uli_type == "19":
-                return "CGI, TAI and ECGI"
-            elif uli_type == "1A":
-                return "SAI, TAI and ECGI"
-            elif uli_type == "1C":
-                return "RAI, TAI and ECGI"
-            elif uli_type == "1E":
-                return "SAI, RAI, TAI and ECGI"
-            else:
-                return "Unknown"
+        details = []
+        if self._uli_type:
+            details.append(f"ULI type {self._uli_type} = {self._get_type_description()}")
+        return details

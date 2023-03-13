@@ -4,21 +4,19 @@
 {% block content%}
 <h1 align="left">User Location Information</h1>
 
-{% if submitted == True %}
+{% if formatted_uli %}
 <div class="container">
     {% print(formatted_uli) %}
-    <br/>
-
+    {% if details %}
     <ul class="list-group list-group-flush" id="details">
-        {% for detail in details %}
+        {% for item in details %}
         <li class="list-group-item">
-            {{ detail }}
+            {{ item }}
         </li>
         {% endfor %}
     </ul>
-
+    {% endif %}
 </div>
-<br/>
 {% endif %}
 
 <form method="POST">

@@ -23,7 +23,7 @@ def hex():
                 f"Hexadecimal: {hex.get_value(16)}"
             ]
         except:
-            flash("Invalid value")
+            flash("Invalid value", category="error")
             output = []
         return render_template("hex.html", content=output)
     return render_template("hex.html")
@@ -34,7 +34,6 @@ def uli():
     if request.method == "POST":
         uli = Uli(request.form.get("uli"))
         if not uli.is_valid():
-            flash("Empty or invalid ULI", category="error")
-        return render_template("uli.html", submitted=uli.is_valid(), formatted_uli=uli.get_formatted_uli(),
-                               details=uli.get_uli_details())
+            flash("Invalid ULI", category="error")
+        return render_template("uli.html", formatted_uli=uli.get_formatted_uli(), details=uli.get_uli_details())
     return render_template("uli.html")
