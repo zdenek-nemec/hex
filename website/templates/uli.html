@@ -2,25 +2,21 @@
 {% block title %}ULI{% endblock %}
 
 {% block content%}
-This is ULI page
+<h1 align="left">User Location Information</h1>
 
-<h1 align="center">User Location Information</h1>
-
-{% if submitted == True %}
+{% if formatted_uli %}
 <div class="container">
     {% print(formatted_uli) %}
-    <br/>
-
-<ul class="list-group list-group-flush" id="details">
-    {% for detail in details %}
-    <li class="list-group-item">
-        {{ detail }}
-    </li>
-    {% endfor %}
-</ul>
-
+    {% if details %}
+    <ul class="list-group list-group-flush" id="details">
+        {% for item in details %}
+        <li class="list-group-item">
+            {{ item }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </div>
-<br/>
 {% endif %}
 
 <form method="POST">
