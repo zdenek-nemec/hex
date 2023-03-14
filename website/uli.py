@@ -1,3 +1,17 @@
+import logging
+import timeit
+
+from application_controller import ApplicationController
+
+ULI_TYPE_FIELDS = {
+    0x01: "CGI",
+    0x02: "SAI",
+    0x04: "RAI",
+    0x08: "TAI",
+    0x10: "ECGI",
+}
+
+
 class Uli(object):
     def __init__(self, uli: str):
         self._uli = uli
@@ -14,25 +28,20 @@ class Uli(object):
 
     def _parse_uli(self):
         uli = self._uli
-        if len(uli) < 2:
-            self._valid = False
-            return
-        self._uli_type = uli[0:2]
-        self._fields = self._get_fields(self._uli_type)
+        if len(uli) < 12:
+            raise ValueError(f"Value {uli} is too short to be a valid ULI")
+        index = 0
+        uli_type = uli[index:index + 2]
+        fields = self._get_fields(uli_type)
+
+        self._uli_type = uli_type
+        self._fields = fields
 
     def _get_fields(self, uli_type):
         fields = []
-        if uli_type[0] == "1":
-            fields.append("ECGI")
-        right = f"{int(uli_type[1], 16):04b}"
-        if right[0] == "1":
-            fields.append("TAI")
-        if right[1] == "1":
-            fields.append("RAI")
-        if right[2] == "1":
-            fields.append("SAI")
-        if right[3] == "1":
-            fields.append("CGI")
+        for key in ULI_TYPE_FIELDS:
+            if int(uli_type, 16) & key:
+                fields.append(ULI_TYPE_FIELDS[key])
         return fields
 
     def _get_type_description(self):
@@ -50,3 +59,22 @@ class Uli(object):
         if self._uli_type:
             details.append(f"ULI type {self._uli_type} = {self._get_type_description()}")
         return details
+
+
+def main():
+    application_controller = ApplicationController()
+
+    logging.info("Application started")
+    application_start_time = timeit.default_timer()
+
+    uli = Uli("1F0000000000")
+    print(uli.get_formatted_uli())
+    [print(item) for item in uli.get_uli_details()]
+
+    application_stop_time = timeit.default_timer()
+    logging.debug(f"Finished in {application_stop_time - application_start_time:.1f}s")
+    logging.info("Application finished")
+
+
+if __name__ == "__main__":
+    main()
