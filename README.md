@@ -14,13 +14,15 @@
 
 * [x] Set up project
 * [x] Create repository
+* [x] Hello-World
 * [ ] Update dependencies
 * [ ] Cleanup old files
-* [ ] Website
 * [ ] Publish
-* [ ] Logging
+* [ ] Website
 * [ ] Numbers
-* [ ] ULI
+* [ ] ULI (ToN, Cell ID)
+* [ ] Logging
 * [ ] Selenium tests
 * [ ] Docker
 * [ ] API
+* [ ] Pipeline
