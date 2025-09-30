@@ -15,9 +15,10 @@
 * [x] Set up project
 * [x] Create repository
 * [x] Hello-World
-* [ ] Update dependencies
+* [x] Update dependencies
 * [ ] Cleanup old files
-* [ ] Publish
+* [x] Publish
+* [ ] Update `flask_app.py` for PA
 * [ ] Website
 * [ ] Numbers
 * [ ] ULI (ToN, Cell ID)
