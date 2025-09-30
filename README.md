@@ -18,7 +18,7 @@
 * [x] Update dependencies
 * [ ] Cleanup old files
 * [x] Publish
-* [ ] Update `flask_app.py` for PA
+* [x] Update `flask_app.py` for PA
 * [ ] Website
 * [ ] Numbers
 * [ ] ULI (ToN, Cell ID)
