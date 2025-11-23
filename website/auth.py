@@ -11,6 +11,11 @@ def home():
     return render_template("home.html")
 
 
+@auth.route("/numbers")
+def numbers():
+    return render_template("numbers.html")
+
+
 # @auth.route("/hex", methods=["GET", "POST"])
 # def hex():
 #     if request.method == "POST":
