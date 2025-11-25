@@ -4,4 +4,29 @@
 {% block content%}
 <h1>Numbers</h1>
 
+<h2>Input</h2>
+
+<form method="POST">
+    <div class="form-group">
+        <input
+                type="text"
+                class="form-control"
+                id="number"
+                name="number"
+                placeholder="Enter the number"
+        />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h2>Result</h2>
+
+{% if content %}
+<div class="container">
+    {% for item in content %}
+    {{ item }}
+    {% endfor %}
+</div>
+{% endif %}
+
 {% endblock %}
