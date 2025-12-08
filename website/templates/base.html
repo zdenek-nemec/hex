@@ -16,6 +16,7 @@
           rel="stylesheet"
           crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>{% block title %}Title{% endblock %}</title>
 </head>
 <body>
@@ -26,6 +27,7 @@
     <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
             <a class="nav-item nav-link" id="home" href="/">Home</a>
+            <a class="nav-item nav-link" id="numbers" href="/numbers">Numbers</a>
 <!--            <a class="nav-item nav-link" id="hex" href="/hex">Hex</a>-->
 <!--            <a class="nav-item nav-link" id="uli" href="/uli">ULI</a>-->
         </div>

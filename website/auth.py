@@ -11,6 +11,19 @@ def home():
     return render_template("home.html")
 
 
+@auth.route("/numbers", methods=["GET", "POST"])
+def numbers():
+    if request.method == "POST":
+        number = request.form.get("number")
+        try:
+            output = [f"Original (decimal): {number}"]
+        except:
+            flash("Error", category="error")
+            output = []
+        return render_template("numbers.html", content=output)
+    return render_template("numbers.html")
+
+
 # @auth.route("/hex", methods=["GET", "POST"])
 # def hex():
 #     if request.method == "POST":
