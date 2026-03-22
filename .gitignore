@@ -9,3 +9,6 @@ env/
 
 # uv
 uv-cache/
+
+# Environment
+.env
