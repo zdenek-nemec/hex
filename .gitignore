@@ -2,12 +2,12 @@
 __pycache__/
 *.pyc
 
-# venv
+# Venv
 .venv/
 venv/
 env/
 
-# uv
+# UV
 uv-cache/
 
 # Environment

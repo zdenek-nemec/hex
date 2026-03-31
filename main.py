@@ -1,5 +1,5 @@
 def main():
-    print("Hello from hex!")
+    print("Hello from Hex!")
 
 
 if __name__ == "__main__":
