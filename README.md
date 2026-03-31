@@ -33,7 +33,7 @@ IDE: JetBrains PyCharm
 * [ ] Docker
 * [ ] API
 * [ ] Pipeline
-* [ ] `#26` Secure SECRET_KEY 
+* [x] `#26` Secure SECRET_KEY 
 * [ ] Add "How to build and run" to the README.md
 
 ---
