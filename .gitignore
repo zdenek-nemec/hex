@@ -1,3 +1,14 @@
+# Python
 __pycache__/
 *.pyc
+
+# Venv
+.venv/
 venv/
+env/
+
+# UV
+uv-cache/
+
+# Environment
+.env
