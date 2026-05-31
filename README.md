@@ -47,6 +47,7 @@ Development environment
    * [ ] Remove non-solution tests
 * [x] `#26` Secure SECRET_KEY
 * [ ] `#27` CVEs
+* [x] `#29` ASCII
 
 ---
 

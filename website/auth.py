@@ -8,6 +8,11 @@ def home():
     return render_template("home.html")
 
 
+@auth.route("/ascii")
+def ascii():
+    return render_template("ascii.html")
+
+
 @auth.route("/numbers", methods=["GET", "POST"])
 def numbers():
     if request.method == "POST":
