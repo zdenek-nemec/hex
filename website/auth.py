@@ -11,7 +11,7 @@ def home():
 
 
 @auth.route("/ascii")
-def ascii():
+def ascii_page():
     return render_template("ascii.html")
 
 
@@ -19,11 +19,11 @@ def ascii():
 def numbers():
     if request.method == "POST":
         number = request.form.get("number")
-        try:
-            if number is not None:
+        output = []
+        if number is not None:
+            try:
                 output = Number(number).format()
-        except:
-            flash("Error", category="error")
-            output = []
+            except ValueError:
+                flash("Error", category="error")
         return render_template("numbers.html", content=output)
     return render_template("numbers.html")
