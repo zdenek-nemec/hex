@@ -20,13 +20,9 @@ class Number(object):
     def get(self, base: int = 10):
         return str(self._int_value)  # TODO: Implement base conversion
 
-
-def main():
-    print("Hello, Numbers!")
-    my_number = Number("123", 4)
-    print(my_number)
-    print(my_number.get())
-
-
-if __name__ == "__main__":
-    main()
+    def format(self) -> list[str]:
+        return [
+            f"Original: {self._str_value}",
+            f"Base: {self._base}",
+            f"Integer: {self._int_value}",
+        ]

@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, flash
 
+from number import Number
+
 auth = Blueprint("auth", __name__)
 
 
@@ -18,7 +20,8 @@ def numbers():
     if request.method == "POST":
         number = request.form.get("number")
         try:
-            output = [f"Original (decimal): {number}"]
+            if number is not None:
+                output = Number(number).format()
         except:
             flash("Error", category="error")
             output = []

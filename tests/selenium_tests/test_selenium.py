@@ -1,8 +1,9 @@
 import threading
 import unittest
 
-from flask_app import app
 from selenium import webdriver
+
+from flask_app import app
 
 
 class TestFlaskSelenium(unittest.TestCase):

@@ -1,6 +1,7 @@
-from flask import Flask
 import os
+
 from dotenv import load_dotenv
+from flask import Flask
 
 
 def create_application():

@@ -1,5 +1,7 @@
 import unittest
-from sandbox.number import Number
+
+from number import Number
+
 
 class TestNumber(unittest.TestCase):
     def test_number_decadic_default(self):
@@ -25,6 +27,7 @@ class TestNumber(unittest.TestCase):
         self.assertRaises(ValueError, Number, "0123", 2)
         self.assertRaises(ValueError, Number, "10A", 10)
         self.assertRaises(ValueError, Number, "EF", 8)
+
 
 # TODO
 # Test with different bases (e.g., binary, octal, hexadecimal).
