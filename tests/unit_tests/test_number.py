@@ -28,9 +28,23 @@ class TestNumber(unittest.TestCase):
         self.assertRaises(ValueError, Number, "10A", 10)
         self.assertRaises(ValueError, Number, "EF", 8)
 
+    def test_get_2(self):
+        my_number = Number("17")
+        self.assertEqual(my_number.get(2), "00010001")
+
+    def test_get_8(self):
+        my_number = Number("17")
+        self.assertEqual(my_number.get(8), "21")
+
+    def test_get_10(self):
+        my_number = Number("17")
+        self.assertEqual(my_number.get(10), "17")
+
+    def test_get_16(self):
+        my_number = Number("17")
+        self.assertEqual(my_number.get(16), "11")
 
 # TODO
-# Test with different bases (e.g., binary, octal, hexadecimal).
 # Test with invalid base values (e.g., negative, zero, or unsupported bases).
 # Test with invalid number strings for the given base.
 # Test with very large numbers.

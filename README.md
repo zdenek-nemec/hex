@@ -33,7 +33,14 @@ Development environment
 * [x] Publish
 * [x] Update `flask_app.py` for PA
 * [ ] Website
-* [ ] Numbers
+* [ ] `#3` Numbers
+  * [x] Numbers page 
+  * [x] Number class 
+  * [x] Validation
+  * [x] Formatting output
+  * [x] Conversion 10 to 2/8/16
+  * [ ] Conversion 2/8/16 to 10
+  * [ ] Allow to input any base on Numbers page
 * [ ] ULI (ToN, Cell ID)
 * [ ] Logging
 * [ ] Selenium tests
@@ -48,6 +55,13 @@ Development environment
 * [x] `#26` Secure SECRET_KEY
 * [ ] `#27` CVEs
 * [x] `#29` ASCII
+
+Other
+
+* [ ] Fix the error stripe (Numbers). Do not obscure main menu. Do not move page layout down.
+* [ ] Bigger font for Numbers > Result.
+* [ ] Selenium tests for ASCII
+* [ ] Selenium tests for Numbers
 
 ---
 

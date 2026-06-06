@@ -4,10 +4,18 @@
 {% block content%}
 <h1>Numbers</h1>
 
+<div class="container">
+Number conversion.<br>
+Accepted inputs:
+<ul>
+    <li>Positive integer values: 0, 3, 127, ...</li>
+</ul>
+</div>
+
 <h2>Input</h2>
 
 <form method="POST">
-    <div class="form-group">
+    <div class="input-group">
         <input
                 type="text"
                 class="form-control"
@@ -15,8 +23,10 @@
                 name="number"
                 placeholder="Enter the number"
         />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 <h2>Result</h2>

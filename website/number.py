@@ -18,11 +18,20 @@ class Number(object):
             raise ValueError(f"Value {value} is not valid for base {base}")
 
     def get(self, base: int = 10):
-        return str(self._int_value)  # TODO: Implement base conversion
+        if base == 2:
+            return "{0:08b}".format(self._int_value)
+        if base == 8:
+            return "{0:o}".format(self._int_value)
+        if base == 16:
+            return "{0:x}".format(self._int_value).upper()
+        return str(self._int_value)
+
 
     def format(self) -> list[str]:
         return [
-            f"Original: {self._str_value}",
-            f"Base: {self._base}",
-            f"Integer: {self._int_value}",
+            f"Original: {self._str_value} base {self._base}",
+            f"Decimal: {self.get()}",
+            f"Binary: {self.get(base=2)}",
+            f"Octal: {self.get(base=8)}",
+            f"Hexadecimal: {self.get(base=16)}"
         ]

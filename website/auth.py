@@ -23,7 +23,7 @@ def numbers():
         if number is not None:
             try:
                 output = Number(number).format()
-            except ValueError:
-                flash("Error", category="error")
+            except ValueError as e:
+                flash(f"Error: {e}", category="error")
         return render_template("numbers.html", content=output)
     return render_template("numbers.html")
